@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dkb05xkv76yaf"]
+
+[ext_resource type="Script" uid="uid://bhip8ycocpufs" path="res://scenes/hud.gd" id="1_qpvh6"]
+
+[node name="Node2D" type="CanvasLayer" unique_id=2098179186]
+script = ExtResource("1_qpvh6")
+
+[node name="ScorePanel" type="Control" parent="." unique_id=956016463]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ScoreLabel" type="Label" parent="ScorePanel" unique_id=114950751]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "PONTOS: 0"
+
+[node name="HealthBar" type="ProgressBar" parent="ScorePanel" unique_id=1634460582]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 10.0
+offset_right = 627.0
+offset_bottom = 37.0
+value = 100.0

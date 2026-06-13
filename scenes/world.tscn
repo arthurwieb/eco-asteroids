@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cokr40h5y4hh0"]
+
+[ext_resource type="PackedScene" uid="uid://5l0i4ms78xdf" path="res://scenes/player.tscn" id="1_nnsk1"]
+[ext_resource type="Script" uid="uid://e1gxjesumw63" path="res://scenes/world.gd" id="1_rwgxs"]
+[ext_resource type="PackedScene" uid="uid://dkb05xkv76yaf" path="res://scenes/HUD.tscn" id="3_4wyf3"]
+[ext_resource type="PackedScene" uid="uid://dsjq6rtdi70uh" path="res://scenes/earth.tscn" id="4_k0juu"]
+[ext_resource type="Texture2D" uid="uid://cx4fq6yjasica" path="res://assets/bkgd_0.png" id="5_71j4m"]
+
+[node name="World" type="Node2D" unique_id=797850496]
+script = ExtResource("1_rwgxs")
+
+[node name="Player" parent="." unique_id=614300374 instance=ExtResource("1_nnsk1")]
+position = Vector2(217, 119)
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=2103933752]
+autostart = true
+
+[node name="HUD" parent="." unique_id=2098179186 instance=ExtResource("3_4wyf3")]
+
+[node name="earth" parent="." unique_id=324455800 instance=ExtResource("4_k0juu")]
+position = Vector2(563, 350)
+
+[node name="ParallaxCanvas" type="CanvasLayer" parent="." unique_id=98504566]
+layer = -5
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxCanvas" unique_id=6168008]
+show_behind_parent = true
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(1800, 1800)
+autoscroll = Vector2(-10, -10)
+
+[node name="Bkgd0" type="Sprite2D" parent="ParallaxCanvas/Parallax2D" unique_id=905575138]
+position = Vector2(1016, 621.5)
+scale = Vector2(1.0189999, 0.6235)
+texture = ExtResource("5_71j4m")

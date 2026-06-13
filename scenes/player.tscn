@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://5l0i4ms78xdf"]
+
+[ext_resource type="Script" uid="uid://ce6k321f3jsk1" path="res://scenes/player.gd" id="1_3vyb7"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u8vuu"]
+load_path = "res://.godot/imported/SpaceShip.png-53c2710bd704c7bbdd5c629b5484e9cd.ctex"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8vuu"]
+radius = 4.7794113
+height = 16.17647
+
+[sub_resource type="Gradient" id="Gradient_3vyb7"]
+colors = PackedColorArray(1, 0.627451, 0, 1, 0.4089969, 0.22667229, 0.010697492, 1)
+
+[node name="Player" type="CharacterBody2D" unique_id=614300374]
+collision_mask = 4
+script = ExtResource("1_3vyb7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=64350236]
+position = Vector2(0, -4.7683716e-07)
+rotation = 1.5707964
+scale = Vector2(0.175, 0.276)
+texture = SubResource("CompressedTexture2D_u8vuu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1836216611]
+position = Vector2(-1.42108505e-14, -7.1525574e-07)
+rotation = 1.5707964
+scale = Vector2(2.72, 2.72)
+shape = SubResource("CapsuleShape2D_u8vuu")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=157661439]
+position = Vector2(23, 0)
+gizmo_extents = 17.0
+
+[node name="ThrusterParticle" type="CPUParticles2D" parent="." unique_id=776281010]
+position = Vector2(-23, -6)
+emitting = false
+amount = 77
+lifetime = 0.15000000000000002
+direction = Vector2(-1, 0)
+spread = 16.49
+gravity = Vector2(0, 0)
+initial_velocity_min = 109.74
+initial_velocity_max = 189.6
+scale_amount_min = 0.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_3vyb7")
+
+[node name="ThrusterParticle2" type="CPUParticles2D" parent="." unique_id=1864883121]
+position = Vector2(-23, 6)
+emitting = false
+amount = 77
+lifetime = 0.15000000000000002
+direction = Vector2(-1, 0)
+spread = 16.49
+gravity = Vector2(0, 0)
+initial_velocity_min = 109.74
+initial_velocity_max = 189.6
+scale_amount_min = 0.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_3vyb7")
+
+[node name="WeaponTimer" type="Timer" parent="." unique_id=891001990]

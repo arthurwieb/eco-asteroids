@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dsjq6rtdi70uh"]
+
+[ext_resource type="Script" uid="uid://b3tf2e201121n" path="res://scenes/earth.gd" id="1_2umt7"]
+[ext_resource type="Texture2D" uid="uid://cykb7fctvcrpw" path="res://assets/earth.png" id="2_2umt7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2umt7"]
+radius = 45.044422
+
+[node name="earth" type="Area2D" unique_id=324455800]
+light_mask = 8
+visibility_layer = 4
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_2umt7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1385354618]
+position = Vector2(-0.5000024, -0.50000346)
+scale = Vector2(1.4843749, 1.453125)
+texture = ExtResource("2_2umt7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=553982931]
+shape = SubResource("CircleShape2D_2umt7")
