@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cifngg2270tbr"]
+
+[ext_resource type="Script" uid="uid://dgrbuto6ykbes" path="res://scenes/shotgun_bullet.gd" id="1_xrdm0"]
+[ext_resource type="Texture2D" uid="uid://cfs3ld08q56i3" path="res://assets/SpaceShooterPack/bullet-1.png" id="2_qdvio"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrdm0"]
+radius = 7.0
+
+[node name="ShotgunBullet" type="Area2D" unique_id=591441060]
+light_mask = 2
+visibility_layer = 4
+script = ExtResource("1_xrdm0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=152649875]
+shape = SubResource("CircleShape2D_xrdm0")
+
+[node name="Bullet1" type="Sprite2D" parent="." unique_id=211242124]
+position = Vector2(-14, 0)
+rotation = -1.5707964
+texture = ExtResource("2_qdvio")

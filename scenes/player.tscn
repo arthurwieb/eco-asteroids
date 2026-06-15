@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://5l0i4ms78xdf"]
 
 [ext_resource type="Script" uid="uid://ce6k321f3jsk1" path="res://scenes/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://d264msnbfixu7" path="res://scenes/bullet.tscn" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://cifngg2270tbr" path="res://scenes/shotgun_bullet.tscn" id="3_dqkch"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u8vuu"]
 load_path = "res://.godot/imported/SpaceShip.png-53c2710bd704c7bbdd5c629b5484e9cd.ctex"
@@ -15,6 +17,7 @@ colors = PackedColorArray(1, 0.627451, 0, 1, 0.4089969, 0.22667229, 0.010697492,
 [node name="Player" type="CharacterBody2D" unique_id=614300374]
 collision_mask = 4
 script = ExtResource("1_3vyb7")
+weapon_inventory = Array[PackedScene]([ExtResource("2_qhqgy"), ExtResource("3_dqkch")])
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=64350236]
 position = Vector2(0, -4.7683716e-07)
@@ -61,3 +64,4 @@ scale_amount_max = 3.0
 color_ramp = SubResource("Gradient_3vyb7")
 
 [node name="WeaponTimer" type="Timer" parent="." unique_id=891001990]
+one_shot = true
