@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://hrj7h3b6c5ke"]
+
+[ext_resource type="Script" uid="uid://byeorjior4jr4" path="res://scenes/resource_asteroid.gd" id="1_unowi"]
+[ext_resource type="Texture2D" uid="uid://0ebyvr7stk5q" path="res://assets/SpaceShooterPack/bonus_life.png" id="2_unowi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6mo6b"]
+radius = 26.0
+
+[node name="resource_asteroid" type="Area2D" unique_id=791642776]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_unowi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1535523237]
+position = Vector2(0.50000113, -1.9999994)
+scale = Vector2(0.46874997, 0.525)
+texture = ExtResource("2_unowi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1556756534]
+shape = SubResource("CircleShape2D_6mo6b")

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://btkheqkd58oy5"]
+
+[ext_resource type="Script" uid="uid://d2n2qtx55vr" path="res://scenes/thrash_asteroid.gd" id="1_l8lag"]
+[ext_resource type="Texture2D" uid="uid://bnnlp7wvyb5pq" path="res://assets/Asteroid Brown.png" id="2_ssruj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6mo6b"]
+radius = 22.0
+
+[node name="thrash_asteroid" type="Area2D" unique_id=791642776]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_l8lag")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1535523237]
+position = Vector2(0.5000013, -1.499999)
+scale = Vector2(0.31875002, 0.35625002)
+texture = ExtResource("2_ssruj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1556756534]
+shape = SubResource("CircleShape2D_6mo6b")

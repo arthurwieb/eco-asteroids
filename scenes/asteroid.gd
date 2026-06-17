@@ -7,7 +7,7 @@ enum Size { LARGE, MEDIUM, SMALL }
 var speed: float = 150.0
 var movement_direction: Vector2 = Vector2.RIGHT
 var rotation_speed: float = 1.0
-var score_value: int = 10
+#var score_value: int = 10
 
 func _ready() -> void:
 	# Change visual scale and speed parameters based on size tier
@@ -15,15 +15,15 @@ func _ready() -> void:
 		Size.LARGE:
 			scale = Vector2(2.0, 2.0)
 			speed = randf_range(80.0, 120.0)
-			score_value = 10
+			#score_value = 10
 		Size.MEDIUM:
 			scale = Vector2(1.2, 1.2)
 			speed = randf_range(130.0, 180.0)
-			score_value = 20
+			#score_value = 20
 		Size.SMALL:
 			scale = Vector2(0.6, 0.6)
 			speed = randf_range(200.0, 250.0)
-			score_value = 30
+			#score_value = 30
 			
 	# Pick a random spin speed
 	rotation_speed = randf_range(-2.0, 2.0)
@@ -39,11 +39,11 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	#aqui somente a Bullet pode interferir
 	#essa função quer saber se a bullet entrou na area e vai destruir o asteroid
-	if area is not Bullet:
+	if not area is Bullet:
 		return
-	if get_parent().has_method("asteroid_destroyed"):
-		get_parent().asteroid_destroyed(score_value)
-	
+	#if get_parent().has_method("asteroid_destroyed"):
+		#get_parent().asteroid_destroyed(score_value)
+	apply_score()
 	area.queue_free()
 	split_and_destroy()
 
@@ -65,3 +65,7 @@ func split_and_destroy() -> void:
 			new_asteroid.global_position = global_position
 			
 	queue_free()
+
+func apply_score():
+	print("está merda está sendo chamada")
+	pass

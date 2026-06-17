@@ -4,6 +4,8 @@ const ASTEROID_SCENE = preload("res://scenes/asteroid.tscn")
 @onready var spawn_timer: Timer = $SpawnTimer
 @onready var hud: CanvasLayer = $HUD
 @onready var earth: Earth = $earth 
+@onready var TRASH_ASTEROID_SCENE: PackedScene = preload("res://scenes/thrash_asteroid.tscn")
+@onready var RESOURCE_ASTEROID_SCENE: PackedScene = preload("res://scenes/resource_asteroid.tscn")
 
 func _ready() -> void:
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
@@ -30,24 +32,26 @@ func _on_game_over() -> void:
 func spawn_asteroid_outside_screen() -> void:
 	var screen_rect = get_viewport_rect()
 	var center = screen_rect.size / 2
-	
-	# Determine a spawn radius that safely sits completely outside visual edges
 	var spawn_radius = max(screen_rect.size.x, screen_rect.size.y) * 0.7
 	
-	# 1. Pick a random angle along an imaginary compass perimeter
 	var random_angle = randf_range(0, 2 * PI)
 	var spawn_position = center + Vector2.RIGHT.rotated(random_angle) * spawn_radius
 	
-	# 2. Instance and locate the new threat
-	var asteroid = ASTEROID_SCENE.instantiate()
+	# Sorteia o tipo de asteroide que vai nascer
+	var asteroid: Asteroid
+	if randf() > 0.25:
+		asteroid = TRASH_ASTEROID_SCENE.instantiate()
+	else:
+		asteroid = RESOURCE_ASTEROID_SCENE.instantiate()
+		
 	asteroid.global_position = spawn_position
 	
-	# 3. Point the asteroid roughly toward the center of the screen
-	var target_position = center + Vector2(randf_range(-100, 100), randf_range(-100, 100))
+	var target_position = center + Vector2(randf_range(-200, 200), randf_range(-200, 200))
 	asteroid.movement_direction = (target_position - spawn_position).normalized()
 	
 	add_child(asteroid)
 
 func asteroid_destroyed(points: int) -> void:
+	print("pontos", points)
 	if hud:
 		hud.add_score(points)

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bnnlp7wvyb5pq" path="res://assets/Asteroid Brown.png" id="2_6mo6b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6mo6b"]
-radius = 34.058773
+radius = 22.0
 
 [node name="asteroid" type="Area2D" unique_id=791642776]
 collision_layer = 4
@@ -12,8 +12,8 @@ collision_mask = 3
 script = ExtResource("1_6mo6b")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1535523237]
-position = Vector2(0.50000113, -1.9999994)
-scale = Vector2(0.46874997, 0.525)
+position = Vector2(0.49999714, -0.99999976)
+scale = Vector2(0.31874996, 0.375)
 texture = ExtResource("2_6mo6b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1556756534]

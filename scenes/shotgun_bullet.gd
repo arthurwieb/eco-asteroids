@@ -3,7 +3,7 @@ extends Bullet
 
 func _init() -> void:
 	speed = 600.0
-	cooldown = 0.5
+	cooldown = 0.9
 
 func spawn_pattern(scene_root: Node, spawn_pos: Vector2, ship_rotation: float) -> void:
 	var total_pellets = 3
