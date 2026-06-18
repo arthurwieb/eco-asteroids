@@ -11,11 +11,12 @@ extends CharacterBody2D
 @onready var thruster_particles2: CPUParticles2D = $ThrusterParticle2
 @onready var weapon_timer: Timer = $WeaponTimer
 
-var laser_cooldown_multiplier: float = 1.0
-var shotgun_pellet_bonus: int = 0
-
 @export var weapon_inventory: Array[PackedScene] = []
 var current_weapon_idx: int = 0
+
+# --- VARIÁVEIS DE UPGRADE ---
+var laser_level: int = 1
+var shotgun_pellet_bonus: int = 0
 
 func _physics_process(delta: float) -> void:
 	var rotation_dir = Input.get_axis("turn_left", "turn_right")
@@ -37,7 +38,7 @@ func _physics_process(delta: float) -> void:
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
-	if Input.is_action_just_pressed("shoot") and weapon_timer.is_stopped():
+	if Input.is_action_pressed("shoot") and weapon_timer.is_stopped():
 		shoot_bullet()
 	
 	if Input.is_action_just_pressed("change_weapon"):
@@ -51,18 +52,26 @@ func cycle_weapon() -> void:
 
 func shoot_bullet() -> void:
 	if weapon_inventory.is_empty() or not weapon_inventory[current_weapon_idx]:
-			return
+		return
 
 	var active_weapon_scene = weapon_inventory[current_weapon_idx]
 	var b = active_weapon_scene.instantiate()
-
 	var weapon_cooldown = b.cooldown
-	weapon_timer.start(weapon_cooldown)
 
 	if b.has_method("spawn_pattern"):
+		# Comportamento da Shotgun
+		weapon_timer.start(weapon_cooldown)
 		b.spawn_pattern(get_tree().current_scene, muzzle.global_position, rotation, self)
 		b.queue_free()
 	else:
+		# Comportamento do Laser Único: APLICA O UPGRADE DE FIRE RATE AQUI
+		# Cada nível acima do 1 reduz o tempo de recarga em 15% (mínimo de 0.05s)
+		var fire_rate_modifier = max(0.05, 1.0 - (laser_level - 1) * 0.15)
+		weapon_timer.start(weapon_cooldown * fire_rate_modifier)
+		
+		# Injeta o nível atual do upgrade direto na propriedade da bala
+		b.laser_level = laser_level
+			
 		get_tree().current_scene.add_child(b)
 		b.global_position = muzzle.global_position
 		b.rotation = rotation

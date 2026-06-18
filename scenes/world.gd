@@ -114,10 +114,11 @@ func asteroid_destroyed(points: int) -> void:
 	print("pontos", points)
 	if hud:
 		hud.add_score(points)
+		
 func _on_laser_upgrade_pressed() -> void:
-	if player and "laser_cooldown_multiplier" in player:
-		player.laser_cooldown_multiplier = max(0.2, player.laser_cooldown_multiplier - 0.15)
-		print("Upgrade Aplicado: Velocidade do Laser Único aumentada!")
+	if player and "laser_level" in player:
+		player.laser_level += 1
+		print("Upgrade Aplicado: Nível do Homing do Laser aumentado para ", player.laser_level)
 	resume_after_upgrade()
 
 func _on_shotgun_upgrade_pressed() -> void:
