@@ -11,6 +11,9 @@ extends CharacterBody2D
 @onready var thruster_particles2: CPUParticles2D = $ThrusterParticle2
 @onready var weapon_timer: Timer = $WeaponTimer
 
+var laser_cooldown_multiplier: float = 1.0
+var shotgun_pellet_bonus: int = 0
+
 @export var weapon_inventory: Array[PackedScene] = []
 var current_weapon_idx: int = 0
 
@@ -57,7 +60,7 @@ func shoot_bullet() -> void:
 	weapon_timer.start(weapon_cooldown)
 
 	if b.has_method("spawn_pattern"):
-		b.spawn_pattern(get_tree().current_scene, muzzle.global_position, rotation)
+		b.spawn_pattern(get_tree().current_scene, muzzle.global_position, rotation, self)
 		b.queue_free()
 	else:
 		get_tree().current_scene.add_child(b)

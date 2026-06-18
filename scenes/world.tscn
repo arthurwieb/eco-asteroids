@@ -2,16 +2,26 @@
 
 [ext_resource type="PackedScene" uid="uid://5l0i4ms78xdf" path="res://scenes/player.tscn" id="1_nnsk1"]
 [ext_resource type="Script" uid="uid://e1gxjesumw63" path="res://scenes/world.gd" id="1_rwgxs"]
-[ext_resource type="PackedScene" uid="uid://btkheqkd58oy5" path="res://scenes/thrash_asteroid.tscn" id="2_i7141"]
-[ext_resource type="PackedScene" uid="uid://hrj7h3b6c5ke" path="res://scenes/resource_asteroid.tscn" id="3_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://dkb05xkv76yaf" path="res://scenes/HUD.tscn" id="3_4wyf3"]
 [ext_resource type="PackedScene" uid="uid://dsjq6rtdi70uh" path="res://scenes/earth.tscn" id="4_k0juu"]
 [ext_resource type="Texture2D" uid="uid://cx4fq6yjasica" path="res://assets/bkgd_0.png" id="5_71j4m"]
 
+[sub_resource type="GDScript" id="GDScript_71j4m"]
+script/source = "extends CanvasLayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [node name="World" type="Node2D" unique_id=797850496]
 script = ExtResource("1_rwgxs")
-TRASH_ASTEROID_SCENE = ExtResource("2_i7141")
-RESOURCE_ASTEROID_SCENE = ExtResource("3_4mrxx")
 
 [node name="Player" parent="." unique_id=614300374 instance=ExtResource("1_nnsk1")]
 position = Vector2(217, 119)
@@ -37,3 +47,55 @@ autoscroll = Vector2(-10, -10)
 position = Vector2(1016, 621.5)
 scale = Vector2(1.0189999, 0.6235)
 texture = ExtResource("5_71j4m")
+
+[node name="StageTimer" type="Timer" parent="." unique_id=2078283245]
+one_shot = true
+
+[node name="UpgradeScreen" type="CanvasLayer" parent="." unique_id=851623561]
+process_mode = 2
+script = SubResource("GDScript_71j4m")
+
+[node name="Control" type="Control" parent="UpgradeScreen" unique_id=750460488]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bgDim" type="ColorRect" parent="UpgradeScreen/Control" unique_id=1734789121]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.14901961, 0.14901961, 0.14901961, 0.5372549)
+
+[node name="Title" type="Label" parent="UpgradeScreen/Control" unique_id=271688742]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "ESTÁGIO CONCLUÍDO! SELECIONE UM UPGRADE"
+
+[node name="BtnContainer" type="HBoxContainer" parent="UpgradeScreen/Control" unique_id=1503019060]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="BtnSingleshot" type="Button" parent="UpgradeScreen/Control/BtnContainer" unique_id=345424434]
+layout_mode = 2
+text = "Melhorar Arma de Tiro único
+(15% de velocidade)"
+
+[node name="BtnShotgun" type="Button" parent="UpgradeScreen/Control/BtnContainer" unique_id=884419330]
+layout_mode = 2
+text = "Melhorar Shotgun
+(+1 Projétil)"
