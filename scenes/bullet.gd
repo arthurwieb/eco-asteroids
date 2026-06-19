@@ -14,7 +14,7 @@ func _physics_process(delta: float) -> void:
 			var target_dir = (target.global_position - global_position).normalized()
 			
 			
-			var turn_speed = (laser_level - 1) * 0.4
+			var turn_speed = (laser_level - 1) * 0.2
 			direction = direction.move_toward(target_dir, turn_speed * delta).normalized()
 			rotation = direction.angle()
 

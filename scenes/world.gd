@@ -9,7 +9,7 @@ const ASTEROID_SCENE = preload("res://scenes/asteroid.tscn")
 @onready var RESOURCE_ASTEROID_SCENE: PackedScene = preload("res://scenes/resource_asteroid.tscn")
 @onready var player: CharacterBody2D = $Player
 var current_stage: int = 1
-var stage_duration: float = 2.0
+var stage_duration: float = 60.0
 @onready var stage_timer: Timer = $StageTimer
 var last_printed_time: int = -1
 

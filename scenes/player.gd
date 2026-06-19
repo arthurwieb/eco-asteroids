@@ -66,7 +66,7 @@ func shoot_bullet() -> void:
 	else:
 		# Comportamento do Laser Único: APLICA O UPGRADE DE FIRE RATE AQUI
 		# Cada nível acima do 1 reduz o tempo de recarga em 15% (mínimo de 0.05s)
-		var fire_rate_modifier = max(0.05, 1.0 - (laser_level - 1) * 0.15)
+		var fire_rate_modifier = max(0.05, 1.0 - (laser_level - 1) * 0.05)
 		weapon_timer.start(weapon_cooldown * fire_rate_modifier)
 		
 		# Injeta o nível atual do upgrade direto na propriedade da bala
