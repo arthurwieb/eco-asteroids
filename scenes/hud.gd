@@ -24,3 +24,10 @@ func update_stage_text(stage: int) -> void:
 	var stage_label = get_node_or_null("ScorePanel/StageLabel")
 	if stage_label:
 		stage_label.text = "ESTÁGIO: " + str(stage)
+
+# Atualiza dinamicamente o contador regressivo na tela
+func update_timer_text(time_left: float) -> void:
+	var timer_label = get_node_or_null("ScorePanel/TimerLabel")
+	if timer_label:
+		# Usa o ceil() para arredondar para cima (ex: 59.1s vira 60s na tela)
+		timer_label.text = "DEFENDA A TERRA. TEMPO RESTANTE: " + str(ceil(time_left)) + "s"

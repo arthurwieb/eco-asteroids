@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bt1x5e7accbeq"]
+
+[ext_resource type="Script" uid="uid://y73n7qg1uy2q" path="res://scenes/game_over.gd" id="1_xeevv"]
+
+[node name="game_over" type="Control" unique_id=282666168]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xeevv")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1445321733]
+layout_mode = 0
+offset_left = -614.0
+offset_top = -354.0
+offset_right = 654.0
+offset_bottom = 409.0
+color = Color(0.25882354, 0, 0.13333334, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1220365255]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -128.5
+offset_right = 114.0
+offset_bottom = 128.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 27
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=159968693]
+layout_mode = 2
+text = "FIM DE JOGO"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer" unique_id=62729647]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="VBoxContainer" unique_id=152282129]
+layout_mode = 2
+text = "Recomeçar"

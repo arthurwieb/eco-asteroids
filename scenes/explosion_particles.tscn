@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dtpl0gxmckprr"]
+
+[ext_resource type="Texture2D" uid="uid://d0kdoj1xqdhuf" path="res://assets/SpaceShooterPack/fire.png" id="1_jn38s"]
+[ext_resource type="Script" uid="uid://bui5s0vypwdfg" path="res://scenes/explosion_particles.gd" id="2_1fltu"]
+
+[sub_resource type="Curve" id="Curve_1fltu"]
+_data = [Vector2(0, 1), 0.0, -0.20782739, 0, 0, Vector2(0.3323442, 0.0670588), 0.0, 0.0, 0, 0, Vector2(0.44510385, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_4j4pw"]
+colors = PackedColorArray(0.7529412, 0.64705884, 0, 1, 0.96862745, 0.09803922, 0.12941177, 1)
+
+[node name="explosion_particles" type="CPUParticles2D" unique_id=1255696358]
+emitting = false
+amount = 20
+texture = ExtResource("1_jn38s")
+one_shot = true
+speed_scale = 0.5
+explosiveness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 150.0
+damping_min = 16.571
+damping_max = 16.571
+angle_min = -263.3
+angle_max = 28.0
+scale_amount_min = 0.0
+scale_amount_max = 0.85
+scale_amount_curve = SubResource("Curve_1fltu")
+color_ramp = SubResource("Gradient_4j4pw")
+script = ExtResource("2_1fltu")

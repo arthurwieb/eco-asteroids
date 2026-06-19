@@ -13,8 +13,10 @@ offset_bottom = 648.0
 
 [node name="ScoreLabel" type="Label" parent="ScorePanel" unique_id=114950751]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 52.0
+offset_top = 10.0
+offset_right = 136.0
+offset_bottom = 33.0
 text = "PONTOS: 0"
 
 [node name="HealthBar" type="ProgressBar" parent="ScorePanel" unique_id=1634460582]
@@ -36,3 +38,12 @@ Frente: W
 Girar nave: A D
 Trocar arma: Q
 Disparar arma: T"
+
+[node name="TimerLabel" type="Label" parent="ScorePanel" unique_id=974790440]
+layout_mode = 0
+offset_left = 712.0
+offset_top = 10.0
+offset_right = 891.0
+offset_bottom = 74.0
+text = "tEMPO
+"

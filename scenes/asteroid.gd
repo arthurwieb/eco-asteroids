@@ -3,7 +3,7 @@ class_name Asteroid extends Area2D
 # We define states for Size using an Enumeration
 enum Size { LARGE, MEDIUM, SMALL }
 @export var current_size: Size = Size.LARGE
-
+const EXPLOSION_SCENE = preload("res://scenes/explosion_particles.tscn")
 var speed: float = 150.0
 var movement_direction: Vector2 = Vector2.RIGHT
 var rotation_speed: float = 1.0
@@ -49,6 +49,20 @@ func _on_area_entered(area: Area2D) -> void:
 
 func split_and_destroy() -> void:
 	# If we are not a small asteroid, spawn two downscaled counterparts
+	var explosion = EXPLOSION_SCENE.instantiate()
+	explosion.global_position = global_position
+	match current_size:
+		Size.LARGE:
+			explosion.amount = 15          # Muito mais pedaços
+			explosion.scale = Vector2(1.5, 1.5) # Explosão gigante
+		Size.MEDIUM:
+			explosion.amount = 8
+			explosion.scale = Vector2(0.5, 0.5)
+		Size.SMALL:
+			explosion.amount = 2          # Poucos pedaços
+			explosion.scale = Vector2(0.2, 0.2) # Explosão pequenininha
+	get_parent().add_child(explosion)
+	
 	if current_size != Size.SMALL:
 		var next_size = Size.MEDIUM if current_size == Size.LARGE else Size.SMALL
 		

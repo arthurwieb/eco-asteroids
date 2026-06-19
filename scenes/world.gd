@@ -38,25 +38,29 @@ func _ready() -> void:
 	add_child(stage_timer)
 	
 	start_stage()
-	
+
 func _process(delta: float) -> void:
 	var current_second = ceil(stage_timer.time_left)
 	if current_second != last_printed_time and stage_timer.time_left > 0:
 		last_printed_time = current_second
 		print("Tempo restante do estágio: ", current_second, "s")
+	
+	if hud and hud.has_method("update_timer_text"):
+		hud.update_timer_text(stage_timer.time_left)
+
 func _on_stage_timeout() -> void:
 	spawn_timer.stop()
 	print("O tempo acabou! Estágio ", current_stage, " concluído.")
 	
+	# Vitória Absoluta (Passou da fase 10)
 	if current_stage >= 10:
 		print("Vitória Absoluta! A Terra foi totalmente salva!")
-		
-		# --- SALVA O SCORE NA VITÓRIA ---
 		if hud:
 			Global.last_score = hud.current_score
 			
-		await get_tree().create_timer(4.0).timeout
-		get_tree().change_scene_to_file("res://scenes/main_menu.tscn") # Volta pro menu
+		await get_tree().create_timer(2.0).timeout
+		# Altere aqui para ir para a tela de Game Over/Resultados
+		get_tree().change_scene_to_file("res://scenes/game_over.tscn") 
 		return
 		
 	current_stage += 1
@@ -81,18 +85,16 @@ func _on_earth_health_changed(new_health: float) -> void:
 	if hud:
 		hud.update_health_bar(new_health)
 
-# What happens when Earth hits 0 HP
 func _on_game_over() -> void:
 	print("Game Over! Earth was destroyed.")
 	spawn_timer.stop()
 	stage_timer.stop()
 	
-	# --- SALVA O SCORE NA DERROTA ---
 	if hud:
 		Global.last_score = hud.current_score
 	
-	await get_tree().create_timer(3.0).timeout
-	get_tree().change_scene_to_file("res://scenes/main_menu.tscn") # Volta pro menu
+	await get_tree().create_timer(2.0).timeout
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 
 func spawn_asteroid_outside_screen() -> void:
 	var screen_rect = get_viewport_rect()
