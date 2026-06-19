@@ -48,16 +48,18 @@ func _on_stage_timeout() -> void:
 	spawn_timer.stop()
 	print("O tempo acabou! Estágio ", current_stage, " concluído.")
 	
-	# Condição de Vitória Absoluta ao passar do estágio 10
 	if current_stage >= 10:
 		print("Vitória Absoluta! A Terra foi totalmente salva!")
+		
+		# --- SALVA O SCORE NA VITÓRIA ---
+		if hud:
+			Global.last_score = hud.current_score
+			
 		await get_tree().create_timer(4.0).timeout
-		get_tree().reload_current_scene()
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn") # Volta pro menu
 		return
 		
 	current_stage += 1
-	
-	# A MÁGICA ACONTECE AQUI: Pausa o jogo e simplesmente exibe o nó embutido
 	get_tree().paused = true
 	if upgrade_screen:
 		upgrade_screen.show()
@@ -82,11 +84,15 @@ func _on_earth_health_changed(new_health: float) -> void:
 # What happens when Earth hits 0 HP
 func _on_game_over() -> void:
 	print("Game Over! Earth was destroyed.")
-	spawn_timer.stop() # Stop generating threats
+	spawn_timer.stop()
+	stage_timer.stop()
 	
-	# Optional simple game over action: Reload the scene after 3 seconds
+	# --- SALVA O SCORE NA DERROTA ---
+	if hud:
+		Global.last_score = hud.current_score
+	
 	await get_tree().create_timer(3.0).timeout
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn") # Volta pro menu
 
 func spawn_asteroid_outside_screen() -> void:
 	var screen_rect = get_viewport_rect()

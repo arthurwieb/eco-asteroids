@@ -65,15 +65,18 @@ grow_vertical = 2
 
 [node name="bgDim" type="ColorRect" parent="UpgradeScreen/Control" unique_id=1734789121]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1183.0
+offset_bottom = 662.0
 color = Color(0.14901961, 0.14901961, 0.14901961, 0.5372549)
 
 [node name="Title" type="Label" parent="UpgradeScreen/Control" unique_id=271688742]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "ESTÁGIO CONCLUÍDO! SELECIONE UM UPGRADE"
+offset_left = 369.0
+offset_top = 226.0
+offset_right = 759.0
+offset_bottom = 249.0
+text = "ESTÁGIO CONCLUÍDO! SELECIONE UMA EVOLUÇÃO"
+horizontal_alignment = 1
 
 [node name="BtnContainer" type="HBoxContainer" parent="UpgradeScreen/Control" unique_id=1503019060]
 layout_mode = 1
@@ -88,7 +91,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 265
 
 [node name="BtnSingleshot" type="Button" parent="UpgradeScreen/Control/BtnContainer" unique_id=345424434]
 layout_mode = 2

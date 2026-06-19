@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://h3ttylk7g1gx"]
+
+[ext_resource type="Script" uid="uid://1qnppe30s453" path="res://scenes/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://cx4fq6yjasica" path="res://assets/bkgd_0.png" id="2_ekxnf"]
+
+[node name="main_menu" type="Control" unique_id=1489373913]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_l6cm7")
+
+[node name="Bkgd0" type="Sprite2D" parent="." unique_id=408043074]
+position = Vector2(587, 375)
+texture = ExtResource("2_ekxnf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=771915410]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 229.0
+offset_right = 656.0
+offset_bottom = 346.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=1666682606]
+layout_mode = 2
+text = "EcoAsteroids"
+horizontal_alignment = 1
+
+[node name="LastScore" type="Label" parent="VBoxContainer" unique_id=717266138]
+layout_mode = 2
+text = "
+"
+horizontal_alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer" unique_id=470490979]
+layout_mode = 2
+text = "Começar
+"
