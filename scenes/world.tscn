@@ -37,15 +37,10 @@ position = Vector2(563, 350)
 [node name="ParallaxCanvas" type="CanvasLayer" parent="." unique_id=98504566]
 layer = -5
 
-[node name="Parallax2D" type="Parallax2D" parent="ParallaxCanvas" unique_id=6168008]
-show_behind_parent = true
-scroll_scale = Vector2(0, 0)
-repeat_size = Vector2(1800, 1800)
-autoscroll = Vector2(-10, -10)
-
-[node name="Bkgd0" type="Sprite2D" parent="ParallaxCanvas/Parallax2D" unique_id=905575138]
-position = Vector2(1016, 621.5)
-scale = Vector2(1.0189999, 0.6235)
+[node name="Bkgd0" type="Sprite2D" parent="ParallaxCanvas" unique_id=905575138]
+z_index = -1
+position = Vector2(596.49994, 339.25003)
+scale = Vector2(0.5975, 0.33975002)
 texture = ExtResource("5_71j4m")
 
 [node name="StageTimer" type="Timer" parent="." unique_id=2078283245]

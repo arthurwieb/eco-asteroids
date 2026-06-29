@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="eco-asteroids"
-run/main_scene="uid://cokr40h5y4hh0"
+run/main_scene="uid://h3ttylk7g1gx"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 

@@ -5,7 +5,7 @@ extends Asteroid
 
 func _ready() -> void:
 	super._ready() # Executa a escala e rotação do pai (asteroid.gd)
-	add_to_group("trash") # Registra no grupo para o tiro Homing te encontrar
+	add_to_group("trash") # Registra no grupo para o tiro Homing encontrar
 
 func apply_score() -> void:
 	if get_parent().has_method("asteroid_destroyed"):

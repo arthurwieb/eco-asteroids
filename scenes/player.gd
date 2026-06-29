@@ -4,7 +4,8 @@ extends CharacterBody2D
 @export var acceleration: float = 300.0
 @export var max_speed: float = 400.0
 @export var friction: float = 100.0
-
+@onready var sfx_shoot: AudioStreamPlayer2D = $SfxShoot
+@onready var sfx_thruster: AudioStreamPlayer2D = $SfxThruster
 @export var BULLET_SCENE = preload("res://scenes/bullet.tscn")
 @onready var muzzle: Marker2D = $Muzzle
 @onready var thruster_particles: CPUParticles2D = $ThrusterParticle
@@ -14,9 +15,11 @@ extends CharacterBody2D
 @export var weapon_inventory: Array[PackedScene] = []
 var current_weapon_idx: int = 0
 
-# --- VARIÁVEIS DE UPGRADE ---
+
 var laser_level: int = 1
 var shotgun_pellet_bonus: int = 0
+var snd_laser = preload("res://assets/Shoot103.wav")
+var snd_shotgun = preload("res://assets/Shoot110.wav")
 
 func _physics_process(delta: float) -> void:
 	var rotation_dir = Input.get_axis("turn_left", "turn_right")
@@ -28,7 +31,10 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.limit_length(max_speed)
 		thruster_particles.emitting = true
 		thruster_particles2.emitting = true
+		if not sfx_thruster.playing:
+			sfx_thruster.play()
 	else:
+		sfx_thruster.stop()
 		thruster_particles.emitting = false
 		thruster_particles2.emitting = false
 		velocity = velocity.move_toward(Vector2.ZERO, friction * delta)
@@ -53,7 +59,12 @@ func cycle_weapon() -> void:
 func shoot_bullet() -> void:
 	if weapon_inventory.is_empty() or not weapon_inventory[current_weapon_idx]:
 		return
-
+		
+	if current_weapon_idx == 0:
+		sfx_shoot.stream = snd_laser
+	else:
+		sfx_shoot.stream = snd_shotgun
+	sfx_shoot.play()
 	var active_weapon_scene = weapon_inventory[current_weapon_idx]
 	var b = active_weapon_scene.instantiate()
 	var weapon_cooldown = b.cooldown

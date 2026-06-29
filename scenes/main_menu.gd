@@ -6,7 +6,6 @@ extends Control
 func _ready() -> void:
 	get_tree().paused = false
 	
-	# Agora mostramos sempre a última pontuação obtida na sessão
 	last_score_label.text = "ÚLTIMA PONTUAÇÃO: " + str(Global.last_score)
 	
 	start_button.pressed.connect(_on_start_button_pressed)

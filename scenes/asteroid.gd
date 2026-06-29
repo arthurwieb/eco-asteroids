@@ -81,5 +81,4 @@ func split_and_destroy() -> void:
 	queue_free()
 
 func apply_score():
-	print("está merda está sendo chamada")
 	pass

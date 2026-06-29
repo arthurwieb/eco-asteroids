@@ -1,8 +1,9 @@
-[gd_scene format=3 uid="uid://5l0i4ms78xdf"]
+[gd_scene format=4 uid="uid://5l0i4ms78xdf"]
 
 [ext_resource type="Script" uid="uid://ce6k321f3jsk1" path="res://scenes/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://d264msnbfixu7" path="res://scenes/bullet.tscn" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://cifngg2270tbr" path="res://scenes/shotgun_bullet.tscn" id="3_dqkch"]
+[ext_resource type="AudioStream" uid="uid://b62p3ua3p6w7v" path="res://assets/thrustersfx.wav" id="4_dqkch"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u8vuu"]
 load_path = "res://.godot/imported/SpaceShip.png-53c2710bd704c7bbdd5c629b5484e9cd.ctex"
@@ -13,6 +14,10 @@ height = 16.17647
 
 [sub_resource type="Gradient" id="Gradient_3vyb7"]
 colors = PackedColorArray(1, 0.627451, 0, 1, 0.4089969, 0.22667229, 0.010697492, 1)
+
+[sub_resource type="AudioStreamWAV" id="AudioStreamWAV_qhqgy"]
+data = PackedByteArray("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")
+format = 3
 
 [node name="Player" type="CharacterBody2D" unique_id=614300374]
 collision_mask = 4
@@ -65,3 +70,12 @@ color_ramp = SubResource("Gradient_3vyb7")
 
 [node name="WeaponTimer" type="Timer" parent="." unique_id=891001990]
 one_shot = true
+
+[node name="SfxShoot" type="AudioStreamPlayer2D" parent="." unique_id=880289887]
+stream = SubResource("AudioStreamWAV_qhqgy")
+volume_db = -4.809
+
+[node name="SfxThruster" type="AudioStreamPlayer2D" parent="." unique_id=538787437]
+stream = ExtResource("4_dqkch")
+attenuation = 1.8660634
+max_polyphony = 3

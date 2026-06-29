@@ -9,7 +9,7 @@ const ASTEROID_SCENE = preload("res://scenes/asteroid.tscn")
 @onready var RESOURCE_ASTEROID_SCENE: PackedScene = preload("res://scenes/resource_asteroid.tscn")
 @onready var player: CharacterBody2D = $Player
 var current_stage: int = 1
-var stage_duration: float = 60.0
+var stage_duration: float = 30.0
 @onready var stage_timer: Timer = $StageTimer
 var last_printed_time: int = -1
 
@@ -52,14 +52,13 @@ func _on_stage_timeout() -> void:
 	spawn_timer.stop()
 	print("O tempo acabou! Estágio ", current_stage, " concluído.")
 	
-	# Vitória Absoluta (Passou da fase 10)
+	# Vitória
 	if current_stage >= 10:
 		print("Vitória Absoluta! A Terra foi totalmente salva!")
 		if hud:
 			Global.last_score = hud.current_score
 			
 		await get_tree().create_timer(2.0).timeout
-		# Altere aqui para ir para a tela de Game Over/Resultados
 		get_tree().change_scene_to_file("res://scenes/game_over.tscn") 
 		return
 		
